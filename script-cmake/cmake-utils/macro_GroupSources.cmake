@@ -1,0 +1,12 @@
+macro(GROUP_SOURCES root curdir)
+   file(GLOB children RELATIVE ${root}/${curdir}
+                               ${root}/${curdir}/*)
+   foreach(child ${children})
+       if(IS_DIRECTORY ${root}/${curdir}/${child})
+           GROUP_SOURCES(${root} ${curdir}/${child})
+       else()
+           string(REPLACE "/" "\\" groupname ${curdir})
+           source_group(${groupname} FILES ${root}/${curdir}/${child})
+       endif()
+   endforeach()
+endmacro()
