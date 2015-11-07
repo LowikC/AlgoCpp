@@ -1,15 +1,23 @@
-#include "Stack.hpp"
+#include "Queue.hpp"
 #include <cassert>
+#include <iostream>
 
 int main(int argc, char** argv) {
-    Stack<int> stack;
-    stack.push(1);
-    stack.push(2);
-    stack.push(3);
+    Queue<int> queue;
+    queue.enqueue(1);
+    queue.enqueue(2);
+    queue.enqueue(3);
+    queue.enqueue(4);
 
-    assert(stack.pop() == 3);
-    assert(stack.pop() == 2);
-    assert(stack.pop() == 1);
+    std::cout << queue.dequeue() << std::endl;
+    std::cout << queue.dequeue() << std::endl;
 
-    return EXIT_SUCCESS;
+    queue.enqueue(5);
+    std::cout << queue.dequeue() << std::endl;
+    std::cout << queue.dequeue() << std::endl;
+    std::cout << queue.dequeue() << std::endl;
+
+    std::cout << queue.empty() << std::endl;
+
+    return 1; // EXIT_SUCCESS;
 }
