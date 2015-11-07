@@ -1,5 +1,7 @@
 #include "gtest/gtest.h"
 #include "BST.hpp"
+#include <set>
+#include <algorithm>
 
 TEST(BSTTest, insertContains) {
     BST bst;
@@ -62,4 +64,15 @@ TEST(BSTTest, sort) {
     for (size_t i = 0; i < sorted.size() - 1; i++) {
         ASSERT_TRUE(sorted[i] <= sorted[i + 1]);
     }
+}
+
+
+TEST(BSTTest, StdImplementation) {
+    std::set<int> s({ 3, 5, -7, 8, 9, 1, -4 });
+
+    std::vector<int> sorted;
+    std::for_each(s.begin(), s.end(), [&sorted](int x) {sorted.push_back(x); });
+
+    ASSERT_EQ(sorted.size(), s.size());
+    ASSERT_TRUE(std::is_sorted(sorted.begin(), sorted.end()));
 }
