@@ -9,7 +9,7 @@ class MaxPriorityQueue {
 public:
     //! Build a MaxPQ with some initials values.
     //! By default, the PQ will be empty.
-    MaxPriorityQueue(std::vector<Key>& initials = std::vector<Key>());
+    MaxPriorityQueue(const std::vector<Key>& initials = std::vector<Key>());
 
     //! Insert a Key
     void insert(const Key& T);
@@ -28,7 +28,7 @@ private:
 };
 
 template <typename Key>
-MaxPriorityQueue<Key>::MaxPriorityQueue(std::vector<Key>& initials) :
+MaxPriorityQueue<Key>::MaxPriorityQueue(const std::vector<Key> &initials) :
 _queue(initials) {
     std::make_heap(_queue.begin(), _queue.end());
 }
